@@ -12,6 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: output
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with: 
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: | 
+          python -m pip install --upgrade pip
+          
+      - name: Run tests
         run: |
-          echo "===Hello, CI with GitHub Actions!===" 
+           python -m unittest test_main.py
+       
