@@ -1,0 +1,17 @@
+name: check-push
+
+on:
+  push:
+    branches:
+      - master
+      - main
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: output
+        run: |
+          echo "===Hello, CI with GitHub Actions!===" 
