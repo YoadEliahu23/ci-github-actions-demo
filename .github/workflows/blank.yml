@@ -2,26 +2,26 @@
 name: CI Deploy
 
 on:
+  workflow_dispatch:
   push:
       branches:
         - main
         - master
 jobs:
   deploy:
-    runs-on: ubuntu1-latest
+    runs-on: ubuntu-latest
     env:
       SSH_KEY: ${{ secrets.TOP_SECRET }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up python
-        uses: setup-python@v2
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.9'
 
       - name: Install dependencies
-          run: pip install -r ../requirements.txt
+        run: pip install -r requirements.txt
 
       - name: finish
         run: |
